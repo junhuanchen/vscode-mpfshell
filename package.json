@@ -2,7 +2,7 @@
 	"name": "mpfshell",
 	"displayName": "mpfshell",
 	"description": "use mpfshell control your micropython.",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"engines": {
 		"vscode": "^1.34.0"
 	},
@@ -48,7 +48,7 @@
 							"/dev/tty.wchusbserial"
 						],
 						"default": "",
-						"description": "Such as open COM5 or open ws:127.0.0.1,1234.",
+						"description": "Such as COM5 or ws:127.0.0.1,1234.",
 						"scope": "resource"
 					}
 				}

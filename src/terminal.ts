@@ -6,8 +6,8 @@ function get_Path() {
 
     let editor = vscode.window.activeTextEditor;
 
-    if(editor !== undefined && editor.document.uri.scheme === 'file'){
-        
+    if (editor !== undefined && editor.document.uri.scheme === 'file') {
+
         // console.log(editor.document);
 
         return editor.document.uri.fsPath;
@@ -19,11 +19,11 @@ function get_Path() {
 export default class Terminal {
 
     constructor() {
-        
+
     }
 
     async set_open() {
-        
+
         let serial: string | undefined = "";
         let Folders: vscode.WorkspaceFolder | undefined;
 
@@ -32,28 +32,28 @@ export default class Terminal {
             // console.log(vscode.workspace.workspaceFolders);
 
             if (vscode.workspace.workspaceFolders.length > 1) {
-                
+
                 Folders = await vscode.window.showWorkspaceFolderPick({ placeHolder: 'Pick Workspace Folder to which this setting should be applied' });
             } else {
                 Folders = vscode.workspace.workspaceFolders[0];
             }
 
-            serial = await vscode.window.showQuickPick(['Auto Judge', 'COM5', 'ttyUSB0', '/dev/tty.wchusbserial'], { placeHolder: 'Input your open args for mpfshell.' });
+            serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
 
-            if (serial === 'Auto Judge') {
+            if (serial === undefined) {
                 serial = "";
             }
 
             if (Folders !== undefined) {
                 await vscode.workspace.getConfiguration('', Folders.uri).update('mpfshell.open', serial, vscode.ConfigurationTarget.WorkspaceFolder);
             }
-            
+
         } else {
 
             // 无工作区场合
 
-            serial = await vscode.window.showQuickPick(['Auto Judge', 'COM5', 'ttyUSB0', '/dev/tty.wchusbserial'], { placeHolder: 'Input your open args for mpfshell.' });       
-            if (serial === 'Auto Judge') {
+            serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
+            if (serial === undefined) {
                 serial = "";
             }
             await vscode.workspace.getConfiguration().update('mpfshell.open', serial, vscode.ConfigurationTarget.Global);
@@ -71,9 +71,9 @@ export default class Terminal {
             // console.log(vscode.workspace.workspaceFolders);
 
             if (vscode.workspace.workspaceFolders.length > 1) {
-                
+
                 // let editor = vscode.window.activeTextEditor;
-                
+
                 // if(editor !== undefined) {
                 //     let folders = vscode.workspace.workspaceFolders.map(folder => {
                 //         let editor = vscode.window.activeTextEditor;
@@ -87,11 +87,11 @@ export default class Terminal {
                 //     });
 
                 //     console.log(editor.document);
-                    
+
                 //     if (folders){
                 //         Folders = folders[0];
                 //     }
-                    
+
                 // }
 
                 // if (Folders) {
@@ -112,21 +112,21 @@ export default class Terminal {
                 // console.log(config.inspect('mpfshell.open'));
 
                 let cfg = config.inspect('mpfshell.open');
-    
+
                 // cfg = config.get('mpfshell.open');
 
                 if (cfg === undefined || cfg.workspaceFolderValue === undefined) {
-    
+
                     // 不存在配置，重建默认值
-    
-                    serial = await vscode.window.showQuickPick(['Auto Judge', 'COM5', 'ttyUSB0', '/dev/tty.wchusbserial'], { placeHolder: 'Input your open args for mpfshell.' });
-    
-                    if (serial === 'Auto Judge') {
+
+                    serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
+
+                    if (serial === undefined) {
                         serial = "";
                     }
-            
+
                     await config.update('mpfshell.open', serial, vscode.ConfigurationTarget.WorkspaceFolder);
-                    
+
                 } else {
                     serial = <string>cfg.workspaceFolderValue;
                 }
@@ -138,12 +138,12 @@ export default class Terminal {
             // 无工作区场合
 
             let config = vscode.workspace.getConfiguration();
-            
+
             serial = config.get('mpfshell.open');
 
             if (serial === '') {
-                serial = await vscode.window.showQuickPick(['Auto Judge', 'COM5', 'ttyUSB0', '/dev/tty.wchusbserial'], { placeHolder: 'Input your open args for mpfshell.' });       
-                if (serial === 'Auto Judge') {
+                serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
+                if (serial === undefined) {
                     serial = "";
                 }
                 await config.update('mpfshell.open', serial, vscode.ConfigurationTarget.Global);
@@ -165,9 +165,9 @@ export default class Terminal {
 
                 let tmp = path.split('\\');
                 let fileName = tmp[tmp.length - 1];
-                
+
                 console.log(serial, path, fileName);
-                    
+
                 let shell = "mpfs -n --nohelp -c 'open " + serial + "; lcd " + path.replace(fileName, '') + "; runfile " + fileName + ";'";
 
                 if (term !== undefined) {
@@ -180,7 +180,7 @@ export default class Terminal {
 
                 term.sendText(shell);
                 term.show();
-                
+
             });
 
         } catch (error) {
@@ -192,7 +192,7 @@ export default class Terminal {
     tools(): void {
 
         try {
-           
+
             let shell = "mpfs";
 
             if (term !== undefined) {
@@ -205,7 +205,7 @@ export default class Terminal {
 
             term.sendText(shell);
             term.show();
-            
+
         } catch (error) {
             console.log(error);
         }
@@ -229,7 +229,7 @@ export default class Terminal {
 
                 term.sendText(shell);
                 term.show();
-                
+
             });
 
         } catch (error) {

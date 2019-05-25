@@ -15,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "mpfshell" is now active!');
 
     subscriptions = [
-		vscode.commands.registerCommand('mpfshell.open', () => {
+			vscode.commands.registerCommand('mpfshell.open', () => {
 		
 			term.set_open();
 	

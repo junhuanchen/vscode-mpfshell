@@ -5,7 +5,10 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.3] - 2019-05-26
 ### Added
+
 Writed the [README](README.md) and  [CHANGELOG](CHANGELOG.md) .
+
+Terminal fix showQuickPick to showInputBox
 
 ## [Unreleased]
 
