@@ -41,12 +41,6 @@
 				"properties": {
 					"mpfshell.open": {
 						"type": "string",
-						"enum": [
-							"",
-							"COM5",
-							"ttyUSB0",
-							"/dev/tty.wchusbserial"
-						],
 						"default": "",
 						"description": "Such as COM5 or ws:127.0.0.1,1234.",
 						"scope": "resource"
