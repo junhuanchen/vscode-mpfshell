@@ -15,7 +15,7 @@
 ## Quick start
 
 * **Step 1.** Install [Python 3.5.4](https://www.python.org/downloads/release/python-354/) +
-* **Step 2.** Install [mpfshell-lite](https://github.com/BPI-STEAM/mpfshell-lite).
+* **Step 2.** pip install [mpfshell-lite](https://github.com/BPI-STEAM/mpfshell-lite).
 * **Step 3.** Open or create a Python file and start coding!
 
 In the terminal input `mpfs` into the following mode shows you already installed.
