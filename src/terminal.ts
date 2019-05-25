@@ -38,7 +38,7 @@ export default class Terminal {
                 Folders = vscode.workspace.workspaceFolders[0];
             }
 
-            serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
+            serial = await vscode.window.showInputBox({ placeHolder: 'Input your open args for mpfshell, such as COM5 ttyUSB0 etc. ' });
 
             if (serial === undefined) {
                 serial = "";
@@ -52,7 +52,7 @@ export default class Terminal {
 
             // 无工作区场合
 
-            serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
+            serial = await vscode.window.showInputBox({ placeHolder: 'Input your open args for mpfshell. such as COM5 ttyUSB0 etc.' });
             if (serial === undefined) {
                 serial = "";
             }
@@ -119,7 +119,7 @@ export default class Terminal {
 
                     // 不存在配置，重建默认值
 
-                    serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
+                    serial = await vscode.window.showInputBox({ placeHolder: 'Input your open args for mpfshell. such as COM5 ttyUSB0 etc.' });
 
                     if (serial === undefined) {
                         serial = "";
@@ -142,7 +142,7 @@ export default class Terminal {
             serial = config.get('mpfshell.open');
 
             if (serial === '') {
-                serial = await vscode.window.showInputBox({ value:'COM', placeHolder: 'Input your open args for mpfshell.' });
+                serial = await vscode.window.showInputBox({ placeHolder: 'Input your open args for mpfshell. such as COM5 ttyUSB0 etc.' });
                 if (serial === undefined) {
                     serial = "";
                 }

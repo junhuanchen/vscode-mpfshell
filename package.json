@@ -31,7 +31,10 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:mpfshell.runfile"
+		"onCommand:mpfshell.runfile",
+		"onCommand:mpfshell.open",
+		"onCommand:mpfshell.repl",
+		"onCommand:mpfshell.tools"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
