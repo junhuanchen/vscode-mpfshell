@@ -1,25 +1,97 @@
 {
 	"name": "mpfshell",
 	"displayName": "mpfshell",
-	"description": "use shell manage your micropython.",
-	"version": "1.0.1",
+	"description": "use mpfshell control your micropython.",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.34.0"
 	},
+	"publisher": "junhuanchen",
+	"license": "MIT",
+	"homepage": "https://github.com/junhuanchen/vscode-mpfshell",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/junhuanchen/vscode-mpfshell"
+	},
+	"bugs": {
+		"url": "https://github.com/junhuanchen/vscode-mpfshell/issues"
+	},
+	"icon": "icon.png",
+	"keywords": [
+		"python",
+		"micropython",
+		"mpfshell-lite",
+		"shell",
+		"tools",
+		"repl"
+	],
 	"categories": [
+		"Programming Languages",
+		"Extension Packs",
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:mpfshell.runfile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration": [
+			{
+				"title": "Mpfshell Config",
+				"properties": {
+					"mpfshell.open": {
+						"type": "string",
+						"enum": [
+							"",
+							"COM5",
+							"ttyUSB0",
+							"/dev/tty.wchusbserial"
+						],
+						"default": "",
+						"description": "Such as open COM5 or open ws:127.0.0.1,1234.",
+						"scope": "resource"
+					}
+				}
+			}
+		],
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "mpfshell.runfile",
+				"title": "Mpfs > Run this file",
+				"category": "Mpfshell"
+			},
+			{
+				"command": "mpfshell.open",
+				"title": "Mpfs > Set Open args",
+				"category": "Mpfshell"
+			},
+			{
+				"command": "mpfshell.repl",
+				"title": "Mpfs > Start REPL",
+				"category": "Mpfshell"
+			},
+			{
+				"command": "mpfshell.tools",
+				"title": "Mpfs > Open Tools",
+				"category": "Mpfshell"
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "mpfshell.runfile"
+				},
+				{
+					"command": "mpfshell.open"
+				},
+				{
+					"command": "mpfshell.repl"
+				},
+				{
+					"command": "mpfshell.tools"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
