@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 
 ## [released]
 
+## [1.0.5] - 2019-06-30
+### Added
+
+fix cmd 2009, replace ' is ", error Unknown syntax: '.
+
+## [1.0.4] - 2019-05-28
+### Added
+
+fix COMX Terminal output text.
+
 ## [1.0.3] - 2019-05-26
 ### Added
 
