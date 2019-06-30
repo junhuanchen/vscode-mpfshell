@@ -168,7 +168,7 @@ export default class Terminal {
 
                 console.log(serial, path, fileName);
 
-                let shell = "mpfs -n --nohelp -c 'open " + serial + "; lcd " + path.replace(fileName, '') + "; runfile " + fileName + ";'";
+                let shell = 'mpfs -n --nohelp -c "open ' + serial + '; lcd ' + path.replace(fileName, '') + '; runfile ' + fileName + ';"';
 
                 if (term !== undefined) {
                     term.dispose();
@@ -217,7 +217,7 @@ export default class Terminal {
         try {
             this.get_open().then(serial => {
 
-                let shell = "mpfs -n --nohelp -c 'open " + serial + "; repl ;'";
+                let shell = 'mpfs -n --nohelp -c "open ' + serial + '; repl ;"';
 
                 if (term !== undefined) {
                     term.dispose();
