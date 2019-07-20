@@ -2,7 +2,7 @@
   "name": "mpfshell",
   "displayName": "mpfshell",
   "description": "use mpfshell control your micropython.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "engines": {
     "vscode": "^1.34.0"
   },
@@ -31,6 +31,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onCommand:mpfshell.putfile",
     "onCommand:mpfshell.runfile",
     "onCommand:mpfshell.open",
     "onCommand:mpfshell.repl",
@@ -52,6 +53,11 @@
       }
     ],
     "commands": [
+      {
+        "command": "mpfshell.putfile",
+        "title": "Mpfs > Put this file",
+        "category": "Mpfshell"
+      },
       {
         "command": "mpfshell.runfile",
         "title": "Mpfs > Run this file",
@@ -75,6 +81,9 @@
     ],
     "menus": {
       "editor/context": [
+        {
+          "command": "mpfshell.putfile"
+        },
         {
           "command": "mpfshell.runfile"
         },

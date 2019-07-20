@@ -189,6 +189,72 @@ export default class Terminal {
 
     }
 
+    putfolder(): void {
+
+        try {
+            this.get_open().then(serial => {
+
+                let path = get_Path();
+
+                let tmp = path.split('\\');
+                let fileName = tmp[tmp.length - 1];
+
+                console.log(serial, path, fileName);
+
+                let shell = 'mpfs -n --nohelp -c "open ' + serial + '; lcd ' + path.replace(fileName, '') + '; putfolder ' + fileName + ';"';
+
+                if (term !== undefined) {
+                    term.dispose();
+                }
+
+                term = (<any>vscode.window).createTerminal('mpfshell');
+
+                console.log(shell);
+
+                term.sendText(shell);
+                term.show();
+
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    putfile(): void {
+
+        try {
+            this.get_open().then(serial => {
+
+                let path = get_Path();
+
+                let tmp = path.split('\\');
+                let fileName = tmp[tmp.length - 1];
+
+                console.log(serial, path, fileName);
+
+                let shell = 'mpfs -n --nohelp -c "open ' + serial + '; lcd ' + path.replace(fileName, '') + '; put ' + fileName + ';"';
+
+                if (term !== undefined) {
+                    term.dispose();
+                }
+
+                term = (<any>vscode.window).createTerminal('mpfshell');
+
+                console.log(shell);
+
+                term.sendText(shell);
+                term.show();
+
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
     tools(): void {
 
         try {

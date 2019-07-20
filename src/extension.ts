@@ -25,6 +25,16 @@ export function activate(context: vscode.ExtensionContext) {
 			term.runfile();
 	
 		}),
+		// vscode.commands.registerCommand('mpfshell.putfolder', () => {
+		
+		// 	term.putfolder();
+	
+		// }),
+		vscode.commands.registerCommand('mpfshell.putfile', () => {
+		
+			term.putfile();
+	
+		}),
 		vscode.commands.registerCommand('mpfshell.repl', () => {
 		
 			term.repl();
